@@ -42,7 +42,7 @@ For Raspberry Pi pinout, check out https://www.raspberrypi.org/documentation/usa
     
 2. add this rule to crontab:
 
-  - Launch from CLI crontab -e and add the following line:
+  - Launch from CLI <code>crontab -e</code> and add the following line:
       
           @reboot /usr/local/bin/node /home/pi/Desktop/rpi-fan/index.js >/tmp/fan_output 2>/tmp/fan_error
   
