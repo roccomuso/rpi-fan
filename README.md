@@ -9,15 +9,17 @@ You can see the current RPi temperature using the built-in server functionality 
 1. Scheme (works on both Raspberry Pi and Raspberry Pi 2 model):
 
 
+For Raspberry Pi pinout, check out https://www.raspberrypi.org/documentation/usage/gpio-plus-and-raspi2/
 
-2. You can edit the gpio number and temperature threshold directly in the <code>index.js</code> file:
+2. You can edit the gpio number, temperature threshold etc. directly in the <code>config.json</code> file:
 
-        var pin = 18;
-        var threshold = 40.0;
+        "PIN_NUMBER" =:18,
+        "REFRESH_TIME" : 60,
+        "THRESHOLD" : 40.0
         
-3. Optionally, you can activate the web server to show the current temperature on <code>http://ip_address:4949/temperature</code>
+3. Optionally, you can also activate a web server to show the current temperature on <code>http://ip_address:4949/</code>
 
-        var web_server = false; // true
+        "WEB_SERVER": true
 
 3. Transistor I've used: 2N7000
 

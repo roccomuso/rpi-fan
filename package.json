@@ -1,0 +1,14 @@
+{
+  "name": "rpi-fan",
+  "version": "1.0.0",
+  "description": "Script to control a mini fan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rocco Musolino",
+  "license": "ISC",
+  "dependencies": {
+    "onoff": "^1.0.3"
+  }
+}

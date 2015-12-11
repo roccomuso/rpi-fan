@@ -1,0 +1,6 @@
+{
+	"PIN_NUMBER": 18,
+	"REFRESH_TIME": 60,
+	"THRESHOLD": 40.0,
+	"WEB_SERVER": true
+}
