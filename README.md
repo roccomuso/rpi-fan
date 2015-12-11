@@ -46,5 +46,6 @@ For Raspberry Pi pinout, check out https://www.raspberrypi.org/documentation/usa
       
           @reboot /usr/local/bin/node /home/pi/Desktop/rpi-fan/index.js >/tmp/fan_output 2>/tmp/fan_error
   
+(General console.log and error messages are respectively in <code>/tmp/fan_output</code> and <code>/tmp/fan_error</code>)
   
 #### Author @ Rocco Musolino - hackerstribe.com
