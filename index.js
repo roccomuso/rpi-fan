@@ -2,17 +2,11 @@
 * Author @ Rocco Musolino - Hackerstribe.com
 */
 
+//var fs = require('fs');
 var Gpio = require('onoff').Gpio;
-var exec = require('child_process').exec;
+//var exec = require('child_process').exec;
+var functions = require('./functions.js'); // functions
 var config = require('./config.json'); // Configuration file
-
-function execute(command, callback){ // Execute CLI cmds
-    exec(command, function(error, stdout, stderr){ callback(stdout); });
-};
-
-function parse_temp(data){
-	return data.substr(data.indexOf('=')+1, 4);
-}
 
 
 
@@ -23,8 +17,8 @@ var pin = new Gpio(config.PIN_NUMBER, 'out'); // Check out RPi2 Pinout map
 (
 function loop(){
 	var iter = setInterval(function(){
-		execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
-			if (parse_temp(data) >= config.TEMPERATURE_THRESHOLD){
+		functions.execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
+			if (functions.parse_temp(data) >= config.TEMPERATURE_THRESHOLD){
 				pin.read(function(err, value){
 					if (value == 0){ 
 						pin.writeSync(1); // ON
@@ -54,10 +48,11 @@ if (config.WEB_SERVER){
 	var server = http.createServer(function (req, res) {
 	  res.writeHead(200, {'Content-Type': 'text/html'});
 	  
-	  execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
+	  functions.execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
 	  	 pin.read(function(err, val){
 	  	 	if (err) console.log('Error: '+ err);
-		  	res.end('Current temperature: <b>'+parse_temp(data)+'</b> - Fan status: <b>'+((val == 1) ? 'on' : 'off')+'</b>');
+	  	 	var logs = functions.getLogs();
+		  	res.end('Current temperature: <b>'+functions.parse_temp(data)+'</b> - Fan status: <b>'+((val == 1) ? 'on' : 'off')+'</b><br/><br/>', logs);
 		  });
 	  });
 	  
