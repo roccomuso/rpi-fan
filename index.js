@@ -28,7 +28,7 @@ function loop(){
 				pin.read(function(err, value){
 					if (value == 0){ 
 						pin.writeSync(1); // ON
-						console.log(new Date().toString(), ' - Fan ON!');
+						console.log(new Date().toString(), ' - Fan ON! - ', data);
 					}
 				});		
 				clearInterval(iter);
@@ -37,7 +37,7 @@ function loop(){
 				pin.read(function(err, value){
 					if (value == 1){
 						pin.writeSync(0); // OFF
-						console.log(new Date().toString(), ' - Fan OFF!');
+						console.log(new Date().toString(), ' - Fan OFF! - ', data);
 					}
 				});
 			}
