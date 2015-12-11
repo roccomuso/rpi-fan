@@ -32,7 +32,13 @@ function getLogs(){
 		return "No Logs in "+filePath;
 }
 
+// Function to replace all occurrencies in a given string
+function replaceAll(str, find, replace) {
+  	return str.replace(new RegExp(find, 'g'), replace);
+}
+
 // Exporting the functions
 exports.execute = execute;
 exports.parse_temp = parse_temp;
 exports.getLogs = getLogs;
+exports.replaceAll = replaceAll;

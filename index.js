@@ -51,7 +51,7 @@ if (config.WEB_SERVER){
 	  functions.execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
 	  	 pin.read(function(err, val){
 	  	 	if (err) console.log('Error: '+ err);
-	  	 	var logs = functions.getLogs();
+	  	 	var logs = functions.replaceAll(functions.getLogs(), '\n', '<br/>');
 		  	res.end('<u>Current temperature</u>: <b>'+functions.parse_temp(data)+'</b> - <u>Fan status</u>: <b>'+((val == 1) ? 'on' : 'off')+'</b><br/><br/><u>Logs</u>:<br/><br/>'+logs);
 		  });
 	  });
