@@ -52,7 +52,7 @@ if (config.WEB_SERVER){
 	  	 pin.read(function(err, val){
 	  	 	if (err) console.log('Error: '+ err);
 	  	 	var logs = functions.getLogs();
-		  	res.end('Current temperature: <b>'+functions.parse_temp(data)+'</b> - Fan status: <b>'+((val == 1) ? 'on' : 'off')+'</b><br/>Logs:<br/>'+logs);
+		  	res.end('<u>Current temperature</u>: <b>'+functions.parse_temp(data)+'</b> - <u>Fan status</u>: <b>'+((val == 1) ? 'on' : 'off')+'</b><br/><br/><u>Logs</u>:<br/><br/>'+logs);
 		  });
 	  });
 	  
@@ -60,7 +60,7 @@ if (config.WEB_SERVER){
 
 	server.listen(config.SERVER_PORT, '0.0.0.0');
 
-	console.log('Fan server running at http://0.0.0.0:'+config.SERVER_PORT+'/');
+	console.log(new Date().toString(), ' - Fan web server running at http://0.0.0.0:'+config.SERVER_PORT+'/');
 }
 
 
