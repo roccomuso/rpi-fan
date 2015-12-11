@@ -52,7 +52,7 @@ if (config.WEB_SERVER){
 	  	 pin.read(function(err, val){
 	  	 	if (err) console.log('Error: '+ err);
 	  	 	var logs = functions.getLogs();
-		  	res.end('Current temperature: <b>'+functions.parse_temp(data)+'</b> - Fan status: <b>'+((val == 1) ? 'on' : 'off')+'</b><br/><br/>', logs);
+		  	res.end('Current temperature: <b>'+functions.parse_temp(data)+'</b> - Fan status: <b>'+((val == 1) ? 'on' : 'off')+'</b><br/>Logs:<br/>'+logs);
 		  });
 	  });
 	  

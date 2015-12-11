@@ -29,7 +29,7 @@ function getLogs(){
 	if (_fileExists(filePath))
 		return fs.readFileSync(filePath, "utf8");
 	else
-		return "";
+		return "No Logs in "+filePath;
 }
 
 // Exporting the functions
