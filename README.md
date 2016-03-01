@@ -48,4 +48,9 @@ For Raspberry Pi pinout, check out https://www.raspberrypi.org/documentation/usa
   
 (General console.log and error messages are respectively in <code>/tmp/fan_output</code> and <code>/tmp/fan_error</code> - Update: /tmp/fan_output can now be seen on the web server page.)
   
+You can also better use a process manager (like PM2):
+
+    sudo pm2 start index.js --name="rpi-fan"
+
+
 #### Author @ Rocco Musolino - hackerstribe.com
