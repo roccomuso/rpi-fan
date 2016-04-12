@@ -26,7 +26,7 @@ For Raspberry Pi pinout, check out https://www.raspberrypi.org/documentation/usa
 
         "PIN_NUMBER" : 18,
         "REFRESH_TIME" : 60,
-        "TEMPERATURE_THRESHOLD" : 40.0
+        "TEMPERATURE_THRESHOLD" : 45.0
         
 2. Optionally, you can also activate a web server to show the current temperature on <code>http://ip_address:SERVER_PORT/</code>. Make sure to choose a free port.
 
