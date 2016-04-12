@@ -33,12 +33,20 @@ For Raspberry Pi pinout, check out https://www.raspberrypi.org/documentation/usa
         "WEB_SERVER": true,
         "SERVER_PORT": 4949
 
+Another available option is to pass these parameteres through the CLI:
+
+		node index.js -n 18    # 'Choose the GPIO number'
+		node index.js -p 4949  # 'Start the server on port 4949'
+		node index.js -t 45    # 'Set a temperature threshold of 45 degrees'
+		node index.js -r 60    # 'Check the temperature every 60 seconds'
+
 
 ### Run on start up
 
 1. clone the repo on the <code>/home/pi/Desktop</code>:
 
         git clone https://roccomuso@github.com/roccomuso/rpi-fan.git
+        cd rpi-fan && npm install
     
 2. add this rule to crontab:
 
