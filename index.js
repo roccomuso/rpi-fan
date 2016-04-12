@@ -7,18 +7,17 @@ var Gpio = require('onoff').Gpio;
 //var exec = require('child_process').exec;
 var functions = require('./functions.js'); // functions
 var config = require('./config.json'); // Configuration file
+var argv = require('./arguments-handler.js');
 
 
-
-var pin = new Gpio(config.PIN_NUMBER, 'out'); // Check out RPi2 Pinout map
-
+var pin = new Gpio(argv.pin || config.PIN_NUMBER, 'out'); // Check out RPi2 Pinout map
 
 // Start Loop
 (
 function loop(){
 	var iter = setInterval(function(){
 		functions.execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
-			if (functions.parse_temp(data) >= config.TEMPERATURE_THRESHOLD){
+			if (functions.parse_temp(data) >= (argv.temperature || config.TEMPERATURE_THRESHOLD){
 				pin.read(function(err, value){
 					if (value == 0){ 
 						pin.writeSync(1); // ON
@@ -36,7 +35,7 @@ function loop(){
 				});
 			}
 		});
-	}, config.REFRESH_TIME * 1000);
+	}, (argv.refreshtime || config.REFRESH_TIME) * 1000);
 }()
 );
 
@@ -58,7 +57,7 @@ if (config.WEB_SERVER){
 	  
 	})
 
-	server.listen(config.SERVER_PORT, '0.0.0.0');
+	server.listen(argv.port || config.SERVER_PORT, '0.0.0.0');
 
 	console.log(new Date().toString(), ' - Fan web server running at http://0.0.0.0:'+config.SERVER_PORT+'/');
 }
