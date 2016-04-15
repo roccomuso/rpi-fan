@@ -30,7 +30,7 @@ var argv = require('yargs')
   .example('node index.js -p 4949', 'Start the server on port 4949')
   .example('node index.js -t 45', 'Set a temperature threshold of 45 degrees')
   .example('node index.js -r 60', 'Check the temperature every 60 seconds')
-  .epilogue('@Author: Rocco Musolino - github.com/roccomuso/iot-433mhz - @Copyright 2016')
+  .epilogue('@Author: Rocco Musolino - github.com/roccomuso/rpi-fan - @Copyright 2016')
   .argv;
 
 //console.log(argv);
