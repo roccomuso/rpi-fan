@@ -42,8 +42,8 @@ function replaceAll(str, find, replace) {
 // Check if the fans can spin in the current timestamp
 function allowedInterval(now){
 	if (!moment(now).isValid()) return false;
-	var start_at = moment(FORBIDDEN_INTERVAL.hour, 'h:mm');
-	var until = moment(start_at).add(FORBIDDEN.interval, 'hours');
+	var start_at = moment(config.FORBIDDEN_INTERVAL.hour, 'h:mm');
+	var until = moment(start_at).add(config.FORBIDDEN_INTERVAL.interval, 'hours');
 	if (moment(now).isBetween(start_at, until))
 		return false;
 	else
