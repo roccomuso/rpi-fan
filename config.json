@@ -3,5 +3,9 @@
 	"REFRESH_TIME": 60,
 	"TEMPERATURE_THRESHOLD": 53.0,
 	"WEB_SERVER": true,
-	"SERVER_PORT": 4949
+	"SERVER_PORT": 4949,
+	"FORBIDDEN_INTERVAL": {
+		"hour": "01:00",
+		"interval": 9
+	}
 }

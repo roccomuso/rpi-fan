@@ -1,5 +1,7 @@
 var fs = require('fs');
 var exec = require('child_process').exec;
+var moment = require('moment');
+var config = require('./config.json');
 
 // Execute CLI cmds
 function execute(command, callback){
@@ -37,8 +39,20 @@ function replaceAll(str, find, replace) {
   	return str.replace(new RegExp(find, 'g'), replace);
 }
 
+// Check if the fans can spin in the current timestamp
+function allowedInterval(now){
+	if (!moment(now).isValid()) return false;
+	var start_at = moment(FORBIDDEN_INTERVAL.hour, 'h:mm');
+	var until = moment(start_at).add(FORBIDDEN.interval, 'hours');
+	if (moment(now).isBetween(start_at, until))
+		return false;
+	else
+		return true;
+}
+
 // Exporting the functions
 exports.execute = execute;
 exports.parse_temp = parse_temp;
 exports.getLogs = getLogs;
 exports.replaceAll = replaceAll;
+exports.allowedInterval = allowedInterval;

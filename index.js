@@ -8,7 +8,7 @@ var Gpio = require('onoff').Gpio;
 var functions = require('./functions.js'); // functions
 var config = require('./config.json'); // Configuration file
 var argv = require('./arguments-handler.js');
-
+var moment = require('moment');
 
 var pin = new Gpio(argv.pin || config.PIN_NUMBER, 'out'); // Check out RPi2 Pinout map
 
@@ -17,7 +17,7 @@ var pin = new Gpio(argv.pin || config.PIN_NUMBER, 'out'); // Check out RPi2 Pino
 function loop(){
 	var iter = setInterval(function(){
 		functions.execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
-			if (functions.parse_temp(data) >= (argv.temperature || config.TEMPERATURE_THRESHOLD)){
+			if (functions.parse_temp(data) >= (argv.temperature || config.TEMPERATURE_THRESHOLD) && functions.allowedInterval(moment())){
 				pin.read(function(err, value){
 					if (value == 0){ 
 						pin.writeSync(1); // ON
