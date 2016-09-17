@@ -9,6 +9,7 @@
   "author": "Rocco Musolino",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.15.0",
     "onoff": "^1.0.3",
     "yargs": "^4.6.0"
   }
