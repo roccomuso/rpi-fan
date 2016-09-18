@@ -17,7 +17,8 @@ var pin = new Gpio(argv.pin || config.PIN_NUMBER, 'out'); // Check out RPi2 Pino
 function loop(){
 	var iter = setInterval(function(){
 		functions.execute('/opt/vc/bin/vcgencmd measure_temp', function(data){
-			if (functions.parse_temp(data) >= (argv.temperature || config.TEMPERATURE_THRESHOLD) && functions.allowedInterval(moment())){
+			if (functions.parse_temp(data) >= (argv.temperature || config.TEMPERATURE_THRESHOLD)){
+			     if (functions.allowedInterval(moment())){
 				pin.read(function(err, value){
 					if (value == 0){ 
 						pin.writeSync(1); // ON
@@ -25,7 +26,8 @@ function loop(){
 					}
 				});		
 				clearInterval(iter);
-				setTimeout(loop, 300 * 1000); // Fan on at least for 5 minutes 
+				setTimeout(loop, 300 * 1000); // Fan on at least for 5 minutes
+			     }
 			}else{
 				pin.read(function(err, value){
 					if (value == 1){
