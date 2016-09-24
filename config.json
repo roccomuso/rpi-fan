@@ -5,7 +5,7 @@
 	"WEB_SERVER": true,
 	"SERVER_PORT": 4949,
 	"FORBIDDEN_INTERVAL": {
-		"hour": "01:00",
-		"interval": 9
+		"hour": "00:00",
+		"interval": 11
 	}
 }
